@@ -45,24 +45,24 @@ namespace myoungblog
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
-            // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+			// Uncomment the following lines to enable logging in with third party login providers
+			app.UseMicrosoftAccountAuthentication(
+				clientId: "",
+				clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+			app.UseTwitterAuthentication(
+			   consumerKey: "",
+			   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+			app.UseFacebookAuthentication(
+			   appId: "678374569025310",
+			   appSecret: "b452626405e20c7157880854c15146af");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
-        }
+			app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+			{
+				ClientId = "386607373079-9r6ndbo1bkb2h0r9j9vv0780rh3a5eb7.apps.googleusercontent.com",
+				ClientSecret = "yteqMXyqoQyh_acXzzjOn3Bu"
+			});
+		}
     }
 }
