@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#00FF00" />
+    <title>Home - mYoung Blog</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+	<link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD////d////7f///+3////t////7f///+3////t////7f///+3////t////7f///+3////t////7dXLzO3////d////7f//////////////////////////////////////////wb7A/wAAAP8AAAD/AHR2/wAxM/+dkpT/////7f///+3/////1dDS/8rFx///////WFJE/3JrUv9pYl7/PDU3/wBmaf8AX2H/AAAA/wDu8P8A////AG5v/////+3////tfXlq/6eiNf/Hwl7/JR8A/+rjqP///+3/6uTT/wAAAP8AAAD/AP///wAAAP8AAAD/AE9R/wA9P//////t////7W5qCP///4T///+f/+bgjP+vqXb////u//////8AAAD/AAAA/wAAAP8Az9H/AAAA/wAAAP8AAAD/////7f///+1oYwn///+E////n////7n/aWQ4////6///////AHV3/wAAAP8AAAD/AAAA/wALDf8AdHb/AERG/////+3////tqKSe/5OOL////57///+5///5uf9uaE7//////wAPEP8Atrn/AA8R/wAAAP8AAAD/AAAA/1JKTP/////t////7f/////l4eP/cWxT/4F8Qv/28LL/3dex/3NtY/8AAAD/AAAA/wAAAP8AaGr/ALm7/wBVV///////////7f///+3////////////////f293/AAAA/wAAAP8ABgT/AAAA/1lTVf+CfH7/b2hq/xYQEv9mX2H//////////+3////t7Onr/4WBg///////AAAA/wAAAP8AAAD/AAAA/wQNEP9ybG7//////////////////////3FqbP/////t////7fHt7/8AAAD//vr8/wAAAP8AAAD/AAAA/wAAAP8AAAD/6eTm/2VgYv////////////////9xamz/////7f///+3/////ura4/356fP8XExX/AAAA/wAAAP8AAAD/AAAA////////////fXh2/3p1df9dWFn/w72//////+3////t/////////////////////zk1N/8AAAD/AAAA/314ev+7tqP///////////////7/cm1m///////////t////7f//////////////////////////bWlr////////////b2tb////5f///+X////k/3hzVf//////////7f///+3//////////////////////////2hkZv8AAAD/xMDC/8/Lzf+gm2f////K////xf9UTzn//////////+3////d////7f///+3////t////7f///+3////txcLE7fTw8u3////tsK2s7VxYOO1WU0Ht+PX27f///+3////dAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==" rel="icon" type="image/x-icon">
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Marty's Blog", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse" style="color:lawngreen">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+					<li>@Html.ActionLink("Posts", "Index", "Posts")</li> @*the third spot is the Controller spot in the URL;
+																			 this is the view that you want to render when you click the link
+																			 , the 2nd spot is the Action in the URL, the 1st spot is the text put in the link.*@
+					<li>@Html.ActionLink("Comments", "Index", "Comments")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p style="color:lawngreen; text-align:center;"> &#x1F438; &#x1F438; @DateTime.Now.Year -mYoung Blogalicious!!! &#x1F438; &#x1F438;</p> @*&copy;*@
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

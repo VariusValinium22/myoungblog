@@ -1,0 +1,35 @@
+﻿@model myoungblog.Models.EmailModel
+<link rel="stylesheet" media="screen and (max-width: Xpx) and (min-width: Ypx)" href="style.css" />
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12" style="margin-left:300px; padding:20px">
+			@using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+			{
+				@Html.AntiForgeryToken()
+
+				<div>
+					<input type="text" name="fromname" id="fromname" class="form-control" placeholder="Full Name...." />
+				</div>
+				<div>
+					<input type="text" name="fromemail" id="fromemail" class="form-control" placeholder="Email Address...." />
+				</div>
+				<div>
+					<textarea name="body" id="body" class="form-control margin-b-20" rows="5" placeholder="Message...."></textarea>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<button type="submit" class="btn btn-skin-border btn-block margin-b-20" onclick="alertme()">Send Message</button>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 contact-details" style="color: lawngreen; font-size: 4px; text-shadow: 2px 2px blueviolet">
+			<p class="lead">2121 Brandywine Drive, <br> Matthews, NC 28105<br>(845) 527-3553</p>
+			<p class="lead" style="color:lawngreen"><a href="#contact">Martingyoung@@hotmail.com</a></p>
+		</div>
+	</div>
+
+</div>

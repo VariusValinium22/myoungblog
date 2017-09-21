@@ -1,0 +1,85 @@
+﻿@model IPagedList<myoungblog.Models.Post>
+@using PagedList;
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+}
+@using (Html.BeginForm("Index", "Posts", FormMethod.Post))
+{
+<div>
+	<input name="searchStr" type="text" placeholder="Search" value="@ViewBag.Search"/>  @*searchStr is the name of the parameter that you are passing in the controller so it will pass*@
+	<button class="btn btn-primary" type="submit">Search</button>
+</div>
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create Blog", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Created)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Updated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MediaUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Published)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Slug)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Body)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Updated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MediaUrl)
+			if (item.MediaURL != null)               
+			{                  
+			<img class="img-responsive" src="@item.MediaUrl" alt="">        
+			} 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Published)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Slug)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { slug = item.Slug }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }))
